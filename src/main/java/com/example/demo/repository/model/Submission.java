@@ -1,0 +1,20 @@
+@"
+        package com.example.demo.repository.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import java.time.Instant;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+public class Submission {
+    @Id private String id;
+
+    private String email;
+
+    private String thumbnailKey;
+
+    private Instant createdAt;
+}
+"@ | Out-File -Encoding utf8 "src\main\java\com\example\demo\repository\model\Submission.java"
