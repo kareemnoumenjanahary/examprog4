@@ -1,5 +1,4 @@
-@"
-        package com.example.demo.endpoint.rest.controller;
+package com.example.demo.endpoint.rest.controller;
 
 import static java.io.File.createTempFile;
 
@@ -7,6 +6,7 @@ import com.example.demo.endpoint.rest.model.Submission;
 import com.example.demo.file.bucket.BucketComponent;
 import com.example.demo.repository.SubmissionRepository;
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -43,11 +43,9 @@ public class SubmissionController {
         file.transferTo(tmp);
         bucketComponent.upload(tmp, rawKey);
 
-        // TODO: publier ThumbnailGenerationRequested une fois EventProducer confirmé
-
         var body =
                 Submission.builder()
-                        .id(java.util.UUID.fromString(entity.getId()))
+                        .id(UUID.fromString(entity.getId()))
                         .email(entity.getEmail())
                         .thumbnailKey(null)
                         .createdAt(entity.getCreatedAt())
@@ -57,12 +55,12 @@ public class SubmissionController {
     }
 
     @GetMapping("/submissions")
-    public java.util.List<Submission> listSubmissions() {
+    public List<Submission> listSubmissions() {
         return submissionRepository.findAll().stream()
                 .map(
                         e ->
                                 Submission.builder()
-                                        .id(java.util.UUID.fromString(e.getId()))
+                                        .id(UUID.fromString(e.getId()))
                                         .email(e.getEmail())
                                         .thumbnailKey(e.getThumbnailKey())
                                         .createdAt(e.getCreatedAt())
@@ -76,4 +74,3 @@ public class SubmissionController {
         return dot >= 0 ? name.substring(dot) : ".tmp";
     }
 }
-"@ | Out-File -Encoding utf8 "src\main\java\com\example\demo\endpoint\rest\controller\SubmissionController.java"

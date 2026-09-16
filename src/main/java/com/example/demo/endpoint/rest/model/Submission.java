@@ -1,5 +1,4 @@
-@"
-        package com.example.demo.endpoint.rest.model;
+package com.example.demo.endpoint.rest.model;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -14,4 +13,3 @@ public class Submission {
     private String thumbnailKey;
     private Instant createdAt;
 }
-"@ | Out-File -Encoding utf8 "src\main\java\com\example\demo\endpoint\rest\model\Submission.java"

@@ -1,5 +1,4 @@
-@"
-        package com.example.demo.repository;
+package com.example.demo.repository;
 
 import com.example.demo.repository.model.Submission;
 import java.util.List;
@@ -12,4 +11,3 @@ public interface SubmissionRepository extends JpaRepository<Submission, String> 
     @Override
     List<Submission> findAll();
 }
-"@ | Out-File -Encoding utf8 "src\main\java\com\example\demo\repository\SubmissionRepository.java"

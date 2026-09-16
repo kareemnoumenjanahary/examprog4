@@ -1,5 +1,4 @@
-@"
-        package com.example.demo.repository.model;
+package com.example.demo.repository.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,4 +16,3 @@ public class Submission {
 
     private Instant createdAt;
 }
-"@ | Out-File -Encoding utf8 "src\main\java\com\example\demo\repository\model\Submission.java"
